@@ -1,0 +1,95 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "WETTT"
+basePath: "/v1"
+
+schemes:
+- "http"
+paths:
+  /restaurants/random:
+    post:
+      summary: "Choose a restaurant randomly"
+      operationId: "randomChoose"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/RandomRequestBody"
+      responses:
+        200:
+          description: A list of restaurants
+          schema:
+            $ref: '#/definitions/RandomResponse'
+        405:
+          description: "Invalid input"
+   
+definitions:
+  RandomRequestBody:
+    type: "object"
+    properties:
+      mall:
+        type: "string"
+        example: "vivo"
+      cuisine:
+        type: "string"
+        example: "dining"
+      promo_bank:
+        type: "string"
+        example: "DBS"
+      is_hala:
+        type: "boolean"
+      is_veg:
+        type: "boolean"
+  
+  RandomResponse:
+    type: "object"
+    properties:
+      restaurants:
+        type: "array"
+        items:
+          $ref: '#/definitions/Restaurant'
+  
+  Restaurant:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      name:
+        type: "string"
+        example: "KFC"
+      is_ad:
+        type: "boolean"
+      pic_url:
+        type: "string"
+      unit:
+        type: "string"
+      phone:
+        type: "string"
+      hours:
+        type: "string"
+      description:
+        type: "string"
+      website:
+        type: "string"
+      promotions:
+        type: array
+        items:
+          $ref: '#/definitions/Promotion'
+  
+  Promotion:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      bank:
+        type: "string"
+      card:
+        type: "string"
+      promo:
+        type: "string"
