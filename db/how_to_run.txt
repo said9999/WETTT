@@ -1,0 +1,7 @@
+docker image build -t py37 .
+
+docker container run --publish 8000:8080 --name wettt py37
+
+docker container ls
+
+docker container rm --force wettt
