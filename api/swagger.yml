@@ -50,7 +50,9 @@ definitions:
   RandomResponse:
     type: "object"
     properties:
-      restaurants:
+      restaurant:
+        $ref: '#/definitions/Restaurant'
+      ads:
         type: "array"
         items:
           $ref: '#/definitions/Restaurant'
@@ -63,8 +65,6 @@ definitions:
       name:
         type: "string"
         example: "KFC"
-      is_ad:
-        type: "boolean"
       pic_url:
         type: "string"
       unit:
