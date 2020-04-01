@@ -63,7 +63,8 @@ hours text,
 description text,
 website text,
 pic_url text,
-ad text
+ad text,
+rating float
 )
 """
 )
@@ -72,9 +73,9 @@ print("loading data into restaurants")
 with open("restaurants.tsv", 'r') as f:
     data = csv.reader(f, delimiter="\t", quotechar='"')
     for row in list(data)[1:]:
-        insert_query = """insert into restaurants (rid, mid, name, cuisine, is_halal, is_veg, unit, phone, hours, description, website, pic_url, ad) 
-                          VALUES ({}, {}, "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}")""".format(
-                          int(row[0]), int(row[1]), row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12])         
+        insert_query = """insert into restaurants (rid, mid, name, cuisine, is_halal, is_veg, unit, phone, hours, description, website, pic_url, ad, rating) 
+                          VALUES ({}, {}, "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", {})""".format(
+                          int(row[0]), int(row[1]), row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9], row[10], row[11], row[12], row[13])         
         cur.execute(insert_query)
 
 print("select * from restaurants limit 1:")
