@@ -36,9 +36,11 @@ definitions:
       mall:
         type: "string"
         example: "vivo"
-      cuisine:
-        type: "string"
-        example: "dining"
+      cuisines:
+        type: "array"
+        items:
+          type: "string"
+          example: "dining"
       promo_bank:
         type: "string"
         example: "DBS"

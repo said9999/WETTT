@@ -40,13 +40,8 @@ class Promotion(Base):
     card = Column(String)
     promo = Column(String)
 
-"""
-create table cuisine_types(
-cid int primary key,
-cuisine_type text)
-"""
 class CuisineType(Base):
     __tablename__ = 'cuisine_types'
 
     cid = Column(Integer, primary_key=True)
-    cuisine_type = Column(String) 
+    cuisine_type = Column(String)
