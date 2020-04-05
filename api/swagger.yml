@@ -46,7 +46,18 @@ definitions:
         type: "boolean"
       is_veg:
         type: "boolean"
-  
+  Mall:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      district:
+        type: "string"
+      address:
+        type: "string"
+      description:
+        type: "string"
+
   RandomResponse:
     type: "object"
     properties:
@@ -56,6 +67,8 @@ definitions:
         type: "array"
         items:
           $ref: '#/definitions/Restaurant'
+      mall:
+        $ref: '#/definitions/Mall'
   
   Restaurant:
     type: "object"
