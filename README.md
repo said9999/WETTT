@@ -10,7 +10,7 @@
   - Python library
 
 ## Install Dependency
-`pip install flask gunicorn`
+`pip install -r requirements`
 
 ## Make command
 - `make dev`: start server in dev mode
