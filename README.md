@@ -10,7 +10,7 @@
   - Python library
 
 ## Install Dependency
-`pip install -r requirements`
+`pip install -r requirements.txt`
 
 ## Make command
 - `make dev`: start server in dev mode
