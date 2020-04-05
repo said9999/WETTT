@@ -11,6 +11,7 @@
 
 ## Install Dependency
 `pip install -r requirements.txt`
+`export PYTHONPATH=$(pwd):$PYTHONPATH` Add project root folder to pythonpath
 
 ## Make command
 - `make dev`: start server in dev mode
