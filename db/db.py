@@ -45,6 +45,11 @@ class DAO:
             return None
         
         return ret[random.randint(0, len(ret)-1)]
+    
+    def get_ads(self, recommend_rest_id, mall_id):
+        # TODO: implement this function
+        
+        pass
             
 dao_obj = None
 

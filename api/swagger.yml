@@ -37,10 +37,8 @@ definitions:
         type: "string"
         example: "vivo"
       cuisines:
-        type: "array"
-        items:
-          type: "string"
-          example: "dining"
+        type: "string"
+        example: "dining"
       promo_bank:
         type: "string"
         example: "DBS"
