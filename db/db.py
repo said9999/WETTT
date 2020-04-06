@@ -47,9 +47,17 @@ class DAO:
         return ret[random.randint(0, len(ret)-1)]
     
     def get_ads(self, recommend_rest_id, mall_id):
-        # TODO: implement this function
-        
-        pass
+        # default to 5
+        number_of_ads = 5
+
+        session = self.Session()
+        result = (session.query(Restaurant)
+         .filter(Restaurant.mid == mall_id)
+        .filter(Restaurant.rid != recommend_rest_id)
+        .order_by(Restaurant.rating.desc())
+             .limit(number_of_ads).all())
+        return result
+
             
 dao_obj = None
 
