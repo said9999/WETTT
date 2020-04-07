@@ -9,14 +9,17 @@ def hello():
     name = request.args.get("name", "World")
     return redirect('/index.html', code=302) 
 
-@app.route('/restaurants/random')
+@app.route('/restaurants/random', methods=['POST'])
 def random():
     # process input
-    mall_name = request.args.get("mall")
-    cuisines = request.args.get("cuisines")
-    promo_bank = request.args.get("promo_bank")
-    is_hala = request.args.get("is_hala")
-    is_veg = request.args.get("is_veg")
+    req_data = request.get_json()
+
+    mall_name = req_data("mall")
+    cuisines = req_data("cuisines")
+    promo_bank = req_data("promo_bank")
+    is_hala = req_data("is_hala")
+    is_veg = req_data("is_veg")
+
     if cuisines == '':
         cuisines = None
     if promo_bank == '':
