@@ -13,6 +13,22 @@ class DAO:
         self._engine.connect()
         
         self.Session = sessionmaker(bind=self._engine)
+    def get_mall_id(self, mall_name):
+        '''
+
+        :param mall_name:
+        :return: mall_id if found, None if not found
+        '''
+        session = self.Session()
+        result = (session.query(Mall)
+              .filter(Mall.name == mall_name).all())
+        if result is not None and len(result) == 1:
+            return result[0].mid
+        else:
+            return None
+
+
+
     
     def get_random_choice(self, mall, cuisine=None, promo_bank=None, is_hala=None, is_vege=None):
         '''
@@ -51,13 +67,14 @@ class DAO:
         number_of_ads = 5
 
         session = self.Session()
-        result = (session.query(Restaurant)
+        all_promotion_restaurants = (session.query(Restaurant)
          .filter(Restaurant.mid == mall_id)
         .filter(Restaurant.rid != recommend_rest_id)
-        .order_by(Restaurant.rating.desc())
-             .limit(number_of_ads).all())
-        return result
-
+        .filter(Restaurant.ad == 'Y')
+        .all())
+        start = random.randint(len(all_promotion_restaurants)-number_of_ads-1)
+        end = start + number_of_ads
+        return all_promotion_restaurants[start, end]
             
 dao_obj = None
 
@@ -68,6 +85,7 @@ def get_dao():
         dao_obj = DAO(sql_config.username, sql_config.pwd, sql_config.host, sql_config.db)
 
     return dao_obj
+
         
 
 
