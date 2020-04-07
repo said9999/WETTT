@@ -1,1 +1,4 @@
 p3env/
+*.xml
+
+*.pyc
