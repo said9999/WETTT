@@ -17,7 +17,7 @@ class DAO:
     def get_random_choice(self, mall, cuisine=None, promo_bank=None, is_hala=None, is_vege=None):
         '''
             return None if not found
-            return (Mall, Restaurant, Promotion) if found
+            return [Mall, Restaurant, [Promotion]] if found
         '''
         session = self.Session()
         hala = "Y" if is_hala else "N"
