@@ -13,8 +13,22 @@ class DAO:
         self._engine.connect()
         
         self.Session = sessionmaker(bind=self._engine)
+
+    def get_mall_id(self, mall_name):
+        '''
+
+        :param mall_name:
+        :return: mall_id if found, None if not found
+        '''
+        session = self.Session()
+        result = (session.query(Mall)
+              .filter(Mall.name == mall_name).all())
+        if result is not None and len(result) == 1:
+            return result[0].mid
+        else:
+            return None
     
-    def get_random_choice(self, mall, cuisine=None, promo_bank=None, is_hala=None, is_vege=None):
+    def get_random_choice(self, mall_id, cuisine=None, promo_bank=None, is_hala=None, is_vege=None):
         '''
             return None if not found
             return [Mall, Restaurant, [Promotion]] if found
@@ -25,7 +39,7 @@ class DAO:
         q = (session.query(Mall,Restaurant,Promotion)
             .filter(Mall.mid == Restaurant.mid)
             .filter(Promotion.rid == Restaurant.rid)
-            .filter(Mall.name == mall))
+            .filter(Mall.mid == mall_id))
         
         if cuisine:    
             q = q.filter(Restaurant.cuisine == cuisine)
@@ -47,10 +61,21 @@ class DAO:
         return ret[random.randint(0, len(ret)-1)]
     
     def get_ads(self, recommend_rest_id, mall_id):
-        # TODO: implement this function
-        
-        pass
-            
+        # default to 5
+        number_of_ads = 5
+
+        session = self.Session()
+        all_promotion_restaurants = (session.query(Restaurant)
+         .filter(Restaurant.mid == mall_id)
+        .filter(Restaurant.rid != recommend_rest_id)
+        .filter(Restaurant.ad == 'Y')
+        .all())
+        start = random.randint(0, len(all_promotion_restaurants)-number_of_ads-1)
+        end = start + number_of_ads
+
+        return all_promotion_restaurants[start:end]
+
+
 dao_obj = None
 
 def get_dao():
@@ -60,9 +85,37 @@ def get_dao():
         dao_obj = DAO(sql_config.username, sql_config.pwd, sql_config.host, sql_config.db)
 
     return dao_obj
-        
 
+def to_dict(obj):
+    """
+    convert object to python dict
+    """
+    return {c.name: getattr(obj, c.name) for c in obj.__table__.columns}
 
+def format_restaurant(input_rest, input_promo):
+    if input_promo:
+        promotion = [to_dict(p) for p in input_promo]
+        for p in promotion:
+            p['id'] = str(p['pid'])
+            del p['pid']
+            del p['rid']
+    else:
+        promotion = []
 
+    resturant = to_dict(input_rest)
+    resturant['promotions'] = promotion
+    resturant['id'] = str(resturant['rid'])
+    del resturant['rid']
+    del resturant['mid']
+    del resturant['ad']
+    del resturant['is_halal']
+    del resturant['is_veg']
+    del resturant['rating']
+    del resturant['cuisine']
 
+    return resturant
 
+def format_mall(input_mall):
+    mall = to_dict(input_mall)
+    del mall['mid']
+    return mall
