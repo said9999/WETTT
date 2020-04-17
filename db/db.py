@@ -61,10 +61,10 @@ class DAO:
         mall = ret[0]
         res = ret[1]
 
-        promotions = session.query(Promotion)
-            .filter(Promotion.rid == res.rid).limit(5).all() 
+        promotions = (session.query(Promotion)
+            .filter(Promotion.rid == res.rid).limit(5).all())
         
-        return (ret, mall, promotions)
+        return (mall, res, promotions)
     
     def get_ads(self, recommend_rest_id, mall_id):
         # default to 5
