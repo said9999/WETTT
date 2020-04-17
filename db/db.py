@@ -36,9 +36,8 @@ class DAO:
         session = self.Session()
         hala = "Y" if is_hala else "N"
         vege = "Y" if is_vege else "N"
-        q = (session.query(Mall,Restaurant,Promotion)
+        q = (session.query(Mall,Restaurant)
             .filter(Mall.mid == Restaurant.mid)
-            .filter(Promotion.rid == Restaurant.rid)
             .filter(Mall.mid == mall_id))
         
         if cuisine:    
@@ -58,7 +57,14 @@ class DAO:
         if len(ret) == 0:
             return None
         
-        return ret[random.randint(0, len(ret)-1)]
+        ret = ret[random.randint(0, len(ret)-1)]
+        mall = ret[0]
+        res = ret[1]
+
+        promotions = session.query(Promotion)
+            .filter(Promotion.rid == res.rid).limit(5).all() 
+        
+        return (ret, mall, promotions)
     
     def get_ads(self, recommend_rest_id, mall_id):
         # default to 5
