@@ -3,7 +3,7 @@ import csv
 
 
 # setup connection and database
-host = "wetttdb.cy4gcd1aoagq.us-east-1.rds.amazonaws.com"
+host = "wetttdb.cnuezrft99rv.ap-southeast-1.rds.amazonaws.com"
 port = 3306
 user = "admin"
 password = "cs5224cloudcomputing"
