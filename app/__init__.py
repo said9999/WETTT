@@ -14,11 +14,11 @@ def random():
     # process input
     req_data = request.get_json()
 
-    mall_name = req_data("mall")
-    cuisines = req_data("cuisines")
-    promo_bank = req_data("promo_bank")
-    is_hala = req_data("is_hala")
-    is_veg = req_data("is_veg")
+    mall_name = req_data["mall"]
+    cuisines = req_data.get("cuisines", '')
+    promo_bank = req_data.get("promo_bank", '')
+    is_hala = req_data.get("is_hala", '')
+    is_veg = req_data.get("is_veg", '')
 
     if cuisines == '':
         cuisines = None
@@ -41,7 +41,7 @@ def random():
     if ret:
         mall, rest, promo = ret
         ads = dao.get_ads(rest.rid, mall_id)
-        recommend = format_restaurant(rest, [promo])  # to change!
+        recommend = format_restaurant(rest, promo)  # to change!
         mall = format_mall(mall)
 
     # no recommendation found
