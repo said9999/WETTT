@@ -14,7 +14,7 @@ class DAO:
         
         self.Session = sessionmaker(bind=self._engine)
 
-    def get_mall_id(self, mall_name):
+    def get_mall(self, mall_name):
         '''
 
         :param mall_name:
@@ -24,7 +24,7 @@ class DAO:
         result = (session.query(Mall)
               .filter(Mall.name == mall_name).all())
         if result is not None and len(result) == 1:
-            return result[0].mid
+            return result[0]
         else:
             return None
     
@@ -76,10 +76,8 @@ class DAO:
         .filter(Restaurant.rid != recommend_rest_id)
         .filter(Restaurant.ad == 'Y')
         .all())
-        start = random.randint(0, len(all_promotion_restaurants)-number_of_ads-1)
-        end = start + number_of_ads
 
-        return all_promotion_restaurants[start:end]
+        return random.sample(all_promotion_restaurants, min(len(all_promotion_restaurants), number_of_ads))
 
 
 dao_obj = None

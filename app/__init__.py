@@ -32,29 +32,26 @@ def random():
     # access database
     dao = get_dao()
 
-    mall_id = dao.get_mall_id(mall_name)
-    if not mall_id:
-        return jsonify({'status': 405})
-
+    mall = dao.get_mall(mall_name)
+    mall_id = mall.mid
     # get 1 recommendation and 5 ads
     ret = dao.get_random_choice(mall_id, cuisines, promo_bank, is_hala, is_veg)
     if ret:
-        mall, rest, promo = ret
+        _, rest, promo = ret
         ads = dao.get_ads(rest.rid, mall_id)
         recommend = format_restaurant(rest, promo)  # to change!
-        mall = format_mall(mall)
+        
 
     # no recommendation found
     else:
-        mall = ''
-        recommend = ''
+        recommend = {}
         ads = dao.get_ads(-1, mall_id)
 
     ad_rest = [format_restaurant(r, None) for r in ads]
 
     # return format
+    mall = format_mall(mall)
     message = {
-        'status': 200,
         'restaurant': recommend,
         'ads': ad_rest,
         'mall': mall
