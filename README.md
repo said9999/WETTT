@@ -5,13 +5,17 @@
 - api
   - contract between backend and frontend
 - app
-  - backend logic and api
-- web
-  - frontend (dist)
+  - API and routing defined here
+- config
+  - config for AWS RDS
+- db
+  - logic for retrieving and processing data
 - lib
   - Python library
 - ui-src
   - frontend (src)
+- web
+  - frontend (dist)
 
 ## Install Dependency
 `pip install -r requirements.txt`
