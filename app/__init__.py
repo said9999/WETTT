@@ -4,6 +4,15 @@ from db.db import get_dao, format_restaurant, format_mall
 
 app = Flask(__name__, static_folder='../web', static_url_path='')
 
+
+@app.route('/home')
+def fallback():
+    return redirect('/index.html', code=302)
+
+@app.route('/restaurant')
+def fallback2():
+    return redirect('/index.html', code=302)
+
 @app.route('/')
 def hello():
     name = request.args.get("name", "World")

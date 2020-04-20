@@ -36,33 +36,38 @@ class DAO:
         session = self.Session()
         hala = "Y" if is_hala else "N"
         vege = "Y" if is_vege else "N"
-        q = (session.query(Mall,Restaurant)
+        q = (session.query(Mall, Restaurant, Promotion)
             .filter(Mall.mid == Restaurant.mid)
-            .filter(Mall.mid == mall_id))
+            .filter(Mall.mid == mall_id)
+            .filter(Promotion.rid == Restaurant.rid))
         
         if cuisine:    
             q = q.filter(Restaurant.cuisine == cuisine)
         
-        if promo_bank:    
+        if promo_bank:
             q = q.filter(Promotion.bank == promo_bank)
-        
+
         if is_hala is not None:
             q = q.filter(Restaurant.is_halal == hala)
         
         if is_vege is not None:
             q = q.filter(Restaurant.is_veg == vege)
         
-        ret = q.all()
-
-        if len(ret) == 0:
+        ret0 = q.all()
+        if len(ret0) == 0:
             return None
-        
-        ret = ret[random.randint(0, len(ret)-1)]
+   
+        ret = ret0[random.randint(0, len(ret0)-1)]
         mall = ret[0]
         res = ret[1]
-
-        promotions = (session.query(Promotion)
-            .filter(Promotion.rid == res.rid).limit(5).all())
+        
+        promotions = []
+        for t in ret0:
+            if res.rid == t[2].rid:
+                if promo_bank and t[2].bank == promo_bank:
+                    promotions.append(t[2])
+                if not promo_bank:
+                    promotions.append(t[2])
         
         return (mall, res, promotions)
     
