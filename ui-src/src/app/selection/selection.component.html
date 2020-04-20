@@ -1,0 +1,52 @@
+<form [formGroup]="criteriaForm" (ngSubmit)=onSubmit()>
+    <div class="row" style="text-align:center;">
+        <div class="col-sm-3">
+            <mat-form-field>
+                <mat-label>Mall</mat-label>
+                <mat-select [(value)]="malls[0].id" formControlName="mall">
+                    <mat-option *ngFor="let mall of malls" [value]="mall.id">
+                        {{mall.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-3">
+            <mat-form-field>
+                <mat-label>Cuisine</mat-label>
+                <mat-select [(value)]="cuisines[0].id" formControlName="cuisine">
+                    <mat-option *ngFor="let cuisine of cuisines" [value]="cuisine.id">
+                        {{cuisine.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="col-sm-3">
+            <mat-form-field>
+                <mat-label>Bank Promotion</mat-label>
+                <mat-select [(value)]="banks[0].id" formControlName="promo">
+                    <mat-option *ngFor="let bank of banks" [value]="bank.id">
+                        {{bank.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        
+        <div class="col-sm-3">
+            <mat-label style="margin-right: 40px">Dietary Requirements</mat-label>
+            <br/>
+            <mat-checkbox formControlName="isHalal">Halal</mat-checkbox>
+            <mat-checkbox class="extra-margins" formControlName="isVeg">Vegetarian</mat-checkbox>
+        </div>
+    </div>
+    
+    <br/>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4" style="text-align: center;">
+            <button mat-raised-button color="primary" class="text-uppercase" type="submit">Choose for me</button>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</form>

@@ -1,0 +1,107 @@
+{
+    "ads": [
+        {
+            "cuisine": "Chinese",
+            "description": "Embark on a gastronomic journey of authentic claypot wonders that satisfy both palates and soul. A-One Signature offers a wide variety of dishes to suit every diner in a feel-at-home, comfortable modern Chinese interior. With sizzling hot, fragrant local favourites served on piping hot claypots and hotplates, we promise an all-round dining satisfaction that is set to entice and excite every of your senses.",
+            "hours": "11am-10pm daily",
+            "id": "25",
+            "is_halal": false,
+            "is_veg": false,
+            "name": "AOne Signature",
+            "phone": "",
+            "pic_url": "",
+            "promotions": [],
+            "unit": "#02-128",
+            "website": "http://www.aonegroup.sg/"
+        },
+        {
+            "cuisine": "Japanese",
+            "description": "Aburi-EN is a cosy Japanese restaurant which offers unique, mouth-watering dishes. Aburi, which literally means “flame seared”, brings out the perfection in each dish, balancing each component’s texture and coordinating their flavors so that both come together to create the awesome taste, tantalizing your taste buds. Oishi!!",
+            "hours": "11am-10pm daily",
+            "id": "26",
+            "is_halal": false,
+            "is_veg": false,
+            "name": "Aburi-En",
+            "phone": "",
+            "pic_url": "",
+            "promotions": [],
+            "unit": "#01-159",
+            "website": "http://www.aburi-en.com.sg/"
+        },
+        {
+            "cuisine": "Indonesian",
+            "description": "Ayam Penyet President is a value-for-money casual dining restaurant serving authentic Indonesian cuisine.",
+            "hours": "11am-10pm daily",
+            "id": "28",
+            "is_halal": false,
+            "is_veg": false,
+            "name": "Ayam Penyet President",
+            "phone": "",
+            "pic_url": "",
+            "promotions": [],
+            "unit": "#B2-23F",
+            "website": "https://ayampresident.com/"
+        },
+        {
+            "cuisine": "Chinese",
+            "description": "Savour the essence of health and beauty with every steaming pot of soup at Beauty in The Pot. Inspired by the culture of food for health, the hotpot concept offers two nourishing soup bases that promise rich flavours coupled with abundant benefits. All ingredients are artfully made by our team of chefs to match seamlessly with the rich and flavourful soup bases for maximum enjoyment. Be awed by the sumptuous menu of fresh ingredients and homemade specialties coupled with the dense and nutrient-rich beauty collagen soup and/or spicy nourishing soup (with three levels of spiciness).",
+            "hours": "11am-10pm daily",
+            "id": "29",
+            "is_halal": false,
+            "is_veg": false,
+            "name": "Beauty In The Pot",
+            "phone": "6255 0758",
+            "pic_url": "",
+            "promotions": [],
+            "unit": "#03-08A",
+            "website": "http://www.paradisegp.com/"
+        },
+        {
+            "cuisine": "Western",
+            "description": "Brotzeit is a typical German expression – “Brot” being German for bread and “Zeit” for time referring to a cosy meal complemented by fresh beer. Brotzeit® German Restaurant and Bar is a homegrown brand conceived in 2006, offering authentic German cuisine and premium German beers in a contemporary and casual setting. Enjoy their famous crispy oven-roasted pork knuckle and proprietary sausages in the comfort of the restaurant, while drinking premium German beer and taking in the sights of VivoCity’s waterfront.",
+            "hours": "11am-10pm daily",
+            "id": "61",
+            "is_halal": false,
+            "is_veg": false,
+            "name": "Brotzeit German Restaurant and Bar",
+            "phone": "6272 8815",
+            "pic_url": "https://www.aspirantsg.com/wp-content/uploads/2018/03/Brotzeit-Sharing-Dishes-AspirantSG.jpg",
+            "promotions": [],
+            "unit": "#01-149",
+            "website": "https://brotzeit.co/"
+        }
+    ],
+    "mall": {
+        "address": "1 Harbourfront Walk, Singapore 098585",
+        "description": "VivoCity is the largest shopping mall in Singapore. Located at HarbourFront Walk off Telok Blangah Road in the HarbourFront precinct of Bukit Merah next to HarbourFront MRT station, it was designed by the Japanese architect Toyo Ito. Its name is derived from the word vivacity.",
+        "district": "South",
+        "name": "Vivocity"
+    },
+    "restaurant": {
+        "cuisine": "Western",
+        "description": "Authentic Spanish flavours from the heart of Spain. Helmed by Executive Chef Jose Angel Alonso and one-star Michelin Chef Manuel Berganza, Tapas Club presents diners with exquisite palate and creativity, with the richness of classic Spanish flavours.Their unique dishes are made using locally sourced fresh produce, with selected ingredients flown specially from Spain. Their affordable menu is rooted in authenticity, driven by what you’d find people eating all over Spain.",
+        "hours": "11am-10pm daily",
+        "id": "69",
+        "is_halal": true,
+        "is_veg": true,
+        "name": "Tapas Club",
+        "phone": "6284 4680",
+        "pic_url": "https://lh5.googleusercontent.com/p/AF1QipMuYiUonfLSRXJagUdM_-Ism53I5moGviJXObRC=s773-k-no",
+        "promotions": [
+            {
+                "bank": "Maybank",
+                "card": "Any",
+                "id": "37",
+                "promo": "Up to 20% off"
+            },
+            {
+                "bank": "UOB",
+                "card": "MasterCard",
+                "id": "18",
+                "promo": "4th person free buffet lunch"
+            }
+        ],
+        "unit": "#01-99",
+        "website": "http://www.tapasclub.com/"
+    }
+}

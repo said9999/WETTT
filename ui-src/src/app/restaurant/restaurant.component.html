@@ -1,0 +1,177 @@
+<div class="row">
+    <ng-container *ngIf="isEmpty(recommendation)">
+        <div class="col-md-12">
+            <div style="text-align: center;">
+                <h2>Oops!
+                    <br/>
+                    There are no restaurants matching your preferences</h2>
+                <mat-card-subtitle>Try broadening your search criteria</mat-card-subtitle>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <button mat-raised-button color="primary" class="text-uppercase" routerLink="/home">Start over</button>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!isEmpty(recommendation)">
+        <div class="col-md-12">
+            <img *ngIf="recommendation.pic_url" src="{{recommendation.pic_url}}" class="featured-image img-fluid" alt="Restaurant image">
+            <mat-card-title>{{recommendation.name}}</mat-card-title>
+            <span class="badge badge-pill badge-primary">{{recommendation.cuisine}}</span>
+            <span *ngIf="recommendation.is_halal" class="badge badge-pill badge-info extra-margin-left">Halal</span>
+            <span *ngIf="recommendation.is_veg" class="badge badge-pill badge-success extra-margin-left">Vegetarian</span>
+            <br/>
+            <br/>
+    
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>Address</h5>
+                    <p>{{mall.address}}
+                        <br/>
+                        {{mall.name}}
+                        <br/>
+                        {{recommendation.unit}}
+                    </p>
+                    <h5>Opening hours</h5>
+                    <p>{{recommendation.hours}}</p>
+                </div>
+                <div class="col-sm-6">
+                    <h5>Contact</h5>
+                    <p>{{recommendation.phone}}</p>
+                    <h5>Website</h5>
+                    <p><a href="{{recommendation.website}}">{{recommendation.website}}</a></p>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div [ngClass]="(recommendation.promotions.length > 0) ? 'col-sm-6' : 'col-sm-12'">
+                    <h5>About the restaurant</h5>
+                    <p>{{recommendation.description}}</p>
+                </div>
+                <div *ngIf="recommendation.promotions.length > 0" class="col-sm-6">
+                    <h5>Bank card promotion</h5>
+                    <ng-container *ngFor="let promo of recommendation.promotions">
+                        <p>
+                        {{promo.bank}}
+                        <br/>
+                        {{promo.card}}
+                        <br/>
+                        {{promo.promo}}
+                        </p>
+                    </ng-container>
+                </div>
+            </div>
+    
+        </div>
+    </ng-container>
+</div>
+<br/>
+
+<ng-container *ngIf="ads.length > 0">
+<hr/>
+<br/>
+<div class="row">
+    <div class="col-md-12">
+        <h2 style="text-align: center;">Featured Restaurants</h2>
+        <br/>
+
+        <div class="row">
+            
+            <div class="col-sm-6">
+                <ng-container *ngFor="let ad of ads; let index = index">
+                    <ng-container *ngIf="index % 2 === 0">
+                        <mat-card>
+                            <!-- <div class="card-body"> -->
+                                <img *ngIf="ad.pic_url" src="{{ad.pic_url}}" class="featured-image img-fluid" alt="Restaurant image">
+                                <mat-card-title>{{ad.name}}</mat-card-title>
+                                <mat-card-subtitle>{{ad.unit}}
+                                    <br/>
+                                    <span class="badge badge-pill badge-primary">{{ad.cuisine}}</span>
+                                    <span *ngIf="ad.is_halal" class="badge badge-pill badge-info extra-margin-left">Halal</span>
+                                    <span *ngIf="ad.is_veg" class="badge badge-pill badge-success extra-margin-left">Vegetarian</span>    
+                                </mat-card-subtitle>
+
+                                <mat-card-content>
+                                    <h5>Opening hours</h5>
+                                    <p>{{ad.hours}}</p>
+                                    <h5>Contact</h5>
+                                    <p>{{ad.phone}}</p>
+                                    <h5>Website</h5>
+                                    <p><a href="{{ad.website}}">{{ad.website}}</a></p>
+                                    <h5>About the restaurant</h5>
+                                    <p>{{ad.description}}</p>
+                                    <h5 *ngIf="ad.promotions.length > 0">Bank card promotion</h5>
+                                    <ng-container *ngFor="let promo of ad.promotions">
+                                        <p>
+                                        {{promo.bank}}
+                                        <br/>
+                                        {{promo.card}}
+                                        <br/>
+                                        {{promo.promo}}
+                                        </p>
+                                    </ng-container>
+                                </mat-card-content>
+                            <!-- </div> -->
+                        </mat-card>
+                        <br/>
+                    </ng-container>
+                </ng-container>
+            </div>
+
+            <div class="col-sm-6">
+                <ng-container *ngFor="let ad of ads; let index = index">
+                    <ng-container *ngIf="index % 2 !== 0">
+                        <mat-card>
+                            <!-- <div class="card-body"> -->
+                                <img *ngIf="ad.pic_url" src="{{ad.pic_url}}" class="featured-image img-fluid" alt="Restaurant image">
+                                <mat-card-title>{{ad.name}}</mat-card-title>
+                                <mat-card-subtitle>{{ad.unit}}
+                                    <br/>
+                                    <span class="badge badge-pill badge-primary">{{ad.cuisine}}</span>
+                                    <span *ngIf="ad.is_halal" class="badge badge-pill badge-info extra-margin-left">Halal</span>
+                                    <span *ngIf="ad.is_veg" class="badge badge-pill badge-success extra-margin-left">Vegetarian</span>    
+                                </mat-card-subtitle>
+
+                                <mat-card-content>
+                                    <h5>Opening hours</h5>
+                                    <p>{{ad.hours}}</p>
+                                    <h5>Contact</h5>
+                                    <p>{{ad.phone}}</p>
+                                    <h5>Website</h5>
+                                    <p><a href="{{ad.website}}">{{ad.website}}</a></p>
+                                    <h5>About the restaurant</h5>
+                                    <p>{{ad.description}}</p>
+                                    <h5 *ngIf="ad.promotions.length > 0">Bank card promotion</h5>
+                                    <ng-container *ngFor="let promo of ad.promotions">
+                                        <p>
+                                        {{promo.bank}}
+                                        <br/>
+                                        {{promo.card}}
+                                        <br/>
+                                        {{promo.promo}}
+                                        </p>
+                                    </ng-container>
+                                </mat-card-content>
+                            <!-- </div> -->
+                        </mat-card>
+                        <br/>
+                    </ng-container>
+                </ng-container>
+            </div>
+        </div>
+
+        <div *ngIf="!isEmpty(recommendation)" class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4" style="text-align: center;">
+                <button mat-raised-button color="primary" class="text-uppercase" routerLink="/home">Choose again</button>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+    </div>
+</div>
+</ng-container>
