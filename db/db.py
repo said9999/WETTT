@@ -109,13 +109,12 @@ def format_restaurant(input_rest, input_promo):
     resturant = to_dict(input_rest)
     resturant['promotions'] = promotion
     resturant['id'] = str(resturant['rid'])
+    resturant['is_halal'] = (resturant['is_halal'] == 'Y')
+    resturant['is_veg'] = (resturant['is_veg'] == 'Y') 
     del resturant['rid']
     del resturant['mid']
     del resturant['ad']
-    del resturant['is_halal']
-    del resturant['is_veg']
     del resturant['rating']
-    del resturant['cuisine']
 
     return resturant
 

@@ -86,6 +86,12 @@ definitions:
         type: "string"
       hours:
         type: "string"
+      is_hala:
+        type: "boolean"
+      is_veg:
+        type: "boolean"
+      cuisine:
+        type: "string"
       description:
         type: "string"
       website:
